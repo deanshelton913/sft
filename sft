@@ -1,0 +1,15 @@
+require 'rubygems'
+require 'nokogiri'  
+require "thor"
+require "rest_client"
+ 
+class Sft < Thor
+  desc "show", "Show seattle food trucks for today"
+  def show
+    puts 'Generating list. Please wait. the website is notoriously slow.'
+    page = Nokogiri::HTML(RestClient.get("http://en.wikipedia.org/")) 
+    puts page.css()
+  end
+end
+ 
+Sft.start(ARGV)
